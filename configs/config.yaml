@@ -1,0 +1,58 @@
+data_params:
+  data_dir: ./muse_data/
+  languages:
+  - filename: wiki.en.vec
+    name: en
+  - filename: wiki.fr.vec
+    name: fr
+  mean_center: false
+  mode: rand
+  output_dir: ./output/en-fr
+  supervised:
+    fname: en-fr.0-5000.txt
+    max_freq: -1
+  unit_norm: true
+  unsupervised: true
+discriminator_params:
+  dropout_prob: 0.1
+  embed_dim: 300
+  hidden_dim: 2048
+  max_freq: 75000
+gan_params:
+  src: en
+  tgt: fr
+generator_params:
+  embed_dim: 300
+  init: eye
+train_params:
+  batch_sz: 32
+  epochs: 200 
+  eval_batches: 500
+  factor:
+    ortho: 1.0
+    sup: 1.0
+    unsup: 1.0
+  iters_per_epoch: 5000
+  k: 10
+  log_after: 500
+  lr_decay: 0.98
+  lr_local_dk: 0.5
+  num_disc_rounds: 5
+  num_gen_rounds: 1
+  num_nbrs: 100000
+  num_supervised_rounds: 1
+  opt: SGD
+  opt_params:
+    lr: 0.1
+  ortho_params:
+    ortho_type: none
+  orthogonal: auto_loss
+  patience: 2
+  procrustes_dict_size: 0
+  procrustes_iters: 3
+  procrustes_tgt_rank: 15000
+  procrustes_thresh: 0.0
+  smoothing: 0.1
+  eval_metric: "unsupervised"
+  sup_opt: SGD
+  supervised_method: rcsls
