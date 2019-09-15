@@ -6,8 +6,6 @@ conda install -y pytorch=0.3.0 -c soumit
 pip install torchvision
 pip install scipy
 pip install nltk
-conda install -y faiss-cpu -c pytorch
-conda install -y faiss-gpu -c pytorch
 
 #Download gudhi.
 mkdir -p ./tmp
